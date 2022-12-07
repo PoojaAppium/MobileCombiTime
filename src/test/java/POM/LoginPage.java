@@ -6,11 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import Utility.Generic;
 import io.appium.java_client.android.AndroidDriver;
 
 public class LoginPage {
 
 	 AndroidDriver<WebElement> Driver ;
+	 Generic G;
 	 
 	 public LoginPage(AndroidDriver<WebElement> Driver) {
 		 this.Driver=Driver;
@@ -39,17 +41,13 @@ public class LoginPage {
 	}
 	
 	public void FillTerminalID(String Terminalid) {
-		WebElement ID = Driver.findElement(TerminalID);
-		Wait(ID);
-		ID.sendKeys(Terminalid);	
-		
-		
+		G = new Generic(Driver);
+		G.SendKeys(TerminalID, Terminalid);
 	}
 	
 	public void FillPassword(String PasswordValue) {
-		WebElement pass = Driver.findElement(Password);
-		Wait(pass);
-		pass.sendKeys(PasswordValue);	
+		G = new Generic(Driver);
+		G.SendKeys(Password, PasswordValue);
 		
 	}
 	

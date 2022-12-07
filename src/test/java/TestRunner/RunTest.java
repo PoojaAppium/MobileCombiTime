@@ -12,7 +12,7 @@ glue={"StepsDefinition"},
 monochrome=true , 
 dryRun=false,
 plugin= {"pretty" , "html:target/HtmlReport" },
-tags = {"@Login"}
+tags= {"@CI"}
 )
 public class RunTest {
 	
