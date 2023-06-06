@@ -18,10 +18,10 @@ public class LoginPage {
 		 this.Driver=Driver;
 	 }
 	 
-	By Title = By.xpath("(//android.view.ViewGroup[@index='0'])[7]");
-	By TerminalID = By.xpath("(//android.widget.EditText[@index='1'])[1]");
-	By Password = By.xpath("(//android.widget.EditText[@index='2'])[1]");
-	By LoginButton = By.xpath("(//android.view.ViewGroup[@index='3'])[1]");
+	By Title = By.xpath("//android.widget.TextView[@text='by Zenegy']");
+	By TerminalID = By.xpath("(//android.widget.EditText[@index='3'])[1]");
+	By Password = By.xpath("(//android.widget.EditText[@index='4'])[1]");
+	By LoginButton = By.xpath("(//android.view.ViewGroup[@index='5'])[1]");
 	By WrongCredErrorMessage = By.xpath("//android.widget.TextView[@bounds='[309,1154][772,1207]']");
 	By TerminalNotFoundError = By.xpath("//android.widget.TextView[@bounds='[338,1154][743,1207]']");
 	By PleaseEnterTerminalAndPassword = By.xpath("//android.widget.TextView[@bounds='[176,1131][904,1230]']");

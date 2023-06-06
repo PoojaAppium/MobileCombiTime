@@ -4,7 +4,7 @@ Feature: Job Feature
     Given Application Launch
     When Application Open
     Then Validate Combitime Logo
-    And Fill Terminal ID "6239194-9"
+    And Fill Terminal ID "3021047-3"
     And Fill password "12345"
     And Click on Login
     Then Validate Home Page UI
@@ -18,7 +18,7 @@ Feature: Job Feature
     Then Validate page Title of <Jobs>
     When Click on Filter icon
     And Deselect Internal Job
-    And Select Production Type job
+    And Select Project Type job
     And Click on cancel button
     Then Validate page Title of <Jobs>
     When Click On Planned Section

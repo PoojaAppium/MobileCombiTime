@@ -30,6 +30,7 @@ public class Jobs {
 	By InternalFilter = By.xpath("//android.widget.TextView[@text='Internal']");
 	By Filter = By.xpath("//android.view.ViewGroup[@bounds='[833,2067][970,2167]']");
 	By ProductionFilter = By.xpath("//android.widget.TextView[@text='Production']");
+	By ProjectFilter = By.xpath("//android.widget.TextView[@text='Project']");
 	By CancelFilter = By.xpath("//android.widget.TextView[@text='Cancel']");
 	By FirstJob = By.xpath("(//android.widget.ScrollView//android.view.ViewGroup[1]//android.widget.Switch)[1]");
 	By Selected = By.xpath("(//android.view.ViewGroup[@bounds='[382,466][698,659]'])[2]");
@@ -40,7 +41,8 @@ public class Jobs {
 	By ClockIN_Alert = By.id("android:id/alertTitle");
 	By BackButton = By.xpath("(//android.view.ViewGroup[@bounds='[135,144][198,208]'])[1]");
 	By TimeRegistration = By.xpath("(//android.view.ViewGroup//android.widget.TextView[@index='0'])[1]");
-	By JobRegisteredSuccessfull_TOASTMessage = By.xpath("//android.widget.TextView[@text='Jobs has been updated']");
+	By JobRegisteredSuccessfull_TOASTMessage = By.xpath("//android.widget.TextView[@text='Added successfully']");
+	By JobRegisteredUpdatedSuccessfull_TOASTMessage = By.xpath("//android.widget.TextView[@text='Updated successfully']");
 	
 	public void Wait(WebElement Web) {
 		WebDriverWait WW = new WebDriverWait(Driver,25);
@@ -83,6 +85,17 @@ public class Jobs {
 		Ele.click();
 	}
 	
+	public void ClickOnProjectFilter() {
+		WebDriverWait WW = new WebDriverWait(Driver,25);
+		WebElement Ele = Driver.findElement(ProjectFilter);
+		Wait(Ele);
+		WW.until(ExpectedConditions.elementToBeClickable(Ele));
+		Ele.click();
+	}
+	
+	
+	
+	
 	public void ClickOnCancelFilter() {
 		WebElement Ele = Driver.findElement(CancelFilter);
 		Wait(Ele);
@@ -113,10 +126,14 @@ public class Jobs {
  }
  
  
- public void ValidateJobInSelected(int i) {
+ public void ValidateJobInSelected(int i) throws FileNotFoundException {
 	G= new Generic(Driver);
+	try {
 	 G.ValidateJobInSelected(i);
-	
+	}
+	catch(StaleElementReferenceException E) {
+		G.ValidateJobInSelected(i);
+	}
  }
  
  public void ClickOnSubmitButton() {
@@ -125,10 +142,18 @@ public class Jobs {
 		Ele.click();
  }
  
- public void ValidateToastMessage_SuccessfullUpdated(String text) {
+ public void ValidateToastMessage_SuccessfullAdded(String text) {
 	 WebDriverWait WW = new WebDriverWait(Driver , 40);
 		WW.until(ExpectedConditions.presenceOfElementLocated((JobRegisteredSuccessfull_TOASTMessage)));
 		 WebElement toastMessage = Driver.findElement((JobRegisteredSuccessfull_TOASTMessage));
+			 Assert.assertEquals(toastMessage.getText(), text);
+			System.out.println( "TOAST MESSAGE ----" + toastMessage.getText());
+ }
+ 
+ public void ValidateToastMessage_UpdatedSuccessfullUpdated(String text) {
+	 WebDriverWait WW = new WebDriverWait(Driver , 40);
+		WW.until(ExpectedConditions.presenceOfElementLocated((JobRegisteredUpdatedSuccessfull_TOASTMessage)));
+		 WebElement toastMessage = Driver.findElement((JobRegisteredUpdatedSuccessfull_TOASTMessage));
 			 Assert.assertEquals(toastMessage.getText(), text);
 			System.out.println( "TOAST MESSAGE ----" + toastMessage.getText());
  }
@@ -138,7 +163,7 @@ public class Jobs {
 		G.ValidateJobInRunning(i);
 }
  
- public void ValidateJobinTimeRegistration(int i) throws InterruptedException, FileNotFoundException {
+ public void ValidateJobinTimeRegistration(int i) throws InterruptedException, IOException {
 		G= new Generic(Driver);
 		G.ValidateJobInTIMEREGISTRATION(i);
 }
