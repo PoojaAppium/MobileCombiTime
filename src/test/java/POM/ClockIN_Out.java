@@ -38,6 +38,7 @@ public class ClockIN_Out {
 		WebDriverWait WW = new WebDriverWait(Driver,25);
 		WW.until(ExpectedConditions.visibilityOf(Web));
 	}
+	
 
 	
 	public void AlertHandle() {

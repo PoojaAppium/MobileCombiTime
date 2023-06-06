@@ -23,6 +23,7 @@ public class ForgotPassword {
 	
 	
 	
+	
 	public void Wait(WebElement Web) {
 		WebDriverWait WW = new WebDriverWait(Driver,25);
 		WW.until(ExpectedConditions.visibilityOf(Web));

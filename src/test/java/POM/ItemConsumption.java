@@ -29,6 +29,7 @@ public class ItemConsumption {
 	By Title = By.xpath("//android.widget.TextView[@index='4']");
 
 	
+	
 //________________________ WAIT_______________________________________________________________________
 	
 	public void Wait(WebElement Web) {

@@ -34,6 +34,8 @@ public class LoginPage {
 	}
 	
 	
+	
+	
 	public void ValidateTitle() {
 		WebElement Ele = Driver.findElement(Title);
 		Wait(Ele);
